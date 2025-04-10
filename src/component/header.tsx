@@ -1,10 +1,7 @@
-import PrayerTimesSentence from "./prays-time-sentence"
+import PrayerTimesSentence from "./prays-time-sentence";
 
 const Header = () => {
-  return (
-          <PrayerTimesSentence/>
+  return <PrayerTimesSentence />;
+};
 
-  )
-}
-
-export default Header
+export default Header;
