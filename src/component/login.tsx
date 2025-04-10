@@ -1,8 +1,8 @@
 import { LoginForm } from "./login-form";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const Login = () => {
-  const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
+//   const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
 //   if (token) {
 //     window.location.href = "/";
 //   }

@@ -1,16 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./component/dashboard";
-import Cookies from "js-cookie";
-import Login from "./component/login";
+// import Cookies from "js-cookie";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+import Login from "./component/login";
 
 // Create a QueryClient instance
 
 function App() {
   const queryClient = new QueryClient();
-  const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
+  // const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
 
   // console.log(token);
   // if (!token) {
