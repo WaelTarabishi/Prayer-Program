@@ -52,7 +52,7 @@ export function LoginForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className={"flex flex-col gap-6 w-full"}
+      className={"flex flex-col gap-6 w-full   px-[calc(1vw+0.6rem)]"}
       {...props}>
       <div className="flex flex-col items-center gap-2 text-center w-full">
         <h1 className="text-[calc(5vw+0.7rem)] font-bold text-amber-900">
@@ -76,7 +76,7 @@ export function LoginForm({
             type="email"
             placeholder="example@email.com"
             required
-            className="border-2 w-full border-amber-500 rounded-md p-2 md:p-3 lg:p-4 focus:outline-none lg:h-[calc(3vw)] text-[calc(1vw+1.4rem)] focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            className="border-2 w-full border-amber-500 rounded-md p-2 md:p-3 lg:p-4 focus:outline-none lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)] focus:ring-2 focus:ring-amber-500 focus:border-transparent"
           />
         </div>
         <div className="grid gap-2 w-full">
@@ -93,13 +93,13 @@ export function LoginForm({
             id="password"
             type="password"
             required
-            className="border-2 w-full border-amber-500 rounded-md p-2 md:p-3 lg:p-4 lg:h-[calc(3vw)] text-[calc(1vw+1.4rem)] focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            className="border-2 w-full border-amber-500 rounded-md p-2 md:p-3 lg:p-4 lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)] focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
           />
         </div>
         <button
           disabled={isPending}
           type="submit"
-          className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-md transition-colors duration-500 mt-4  lg:h-[calc(3vw)] text-[calc(1vw+1.4rem)]">
+          className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-md transition-colors duration-500 mt-4  lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)]">
           {isPending ? (
             <span className="loader inline-block border-[3px] border-white border-t-transparent rounded-full animate-spin"></span>
           ) : (

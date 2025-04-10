@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Hadith = () => {
   const [currentHadith, setCurrentHadith] = useState<number>(0);
+  //@ts-ignore
   const [isChanging, setIsChanging] = useState<boolean>(false);
 
   // Collection of hadiths with their narrators
