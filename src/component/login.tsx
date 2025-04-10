@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { LoginForm } from "./login-form";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 
 const Login = () => {
-//   const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
-//   if (token) {
-//     window.location.href = "/";
-//   }
+  const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
+  const navigate = useNavigate();
+  console.log(token);
+  if (token) {
+    navigate("/");
+  }
   return (
     <div className="flex flex-col h-screen bg-amber-100/50">
       <div className="grid h-full    lg:grid-cols-2">
