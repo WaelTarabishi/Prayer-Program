@@ -26,6 +26,7 @@ const PrayerTimes: React.FC = () => {
         <h1 className="text-3xl md:text-4xl text-center font-bold text-amber-900 mb-8">
           Prayer Times Dashboard
         </h1>
+        {/* @ts-ignore */}
         <PrayerTimesDashboard {...prayerTimesData} />
       </div>
     </div>

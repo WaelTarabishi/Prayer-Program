@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import Hadith from './component/hadith';
 import Header from './component/header';
 import PrayerTimes from './component/prays-time';
-import IslamicBox from './component/text-box';
-import Hadith from './component/hadith';
 
 function App() {
   const [currentTime, setCurrentTime] = useState(new Date());

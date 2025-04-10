@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Hadith = () => {
     const [currentHadith, setCurrentHadith] = useState<number>(0);

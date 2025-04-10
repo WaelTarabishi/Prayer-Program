@@ -1,4 +1,3 @@
-import Hadith from "./hadith"
 import PrayerTimesSentence from "./prays-time-sentence"
 
 const Header = () => {

@@ -29,7 +29,7 @@ const hadiths = [
   }
 ];
 
-const IslamicBox = ({ title, className = '', rightContent, leftContent }: { 
+const IslamicBox = ({ title, className = '' }: { 
   title: string, 
   className?: string,
   rightContent?: React.ReactNode,
