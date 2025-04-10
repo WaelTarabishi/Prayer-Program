@@ -3,9 +3,9 @@ import Cookies from "js-cookie";
 
 const Login = () => {
   const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
-  if (token) {
-    window.location.href = "/";
-  }
+//   if (token) {
+//     window.location.href = "/";
+//   }
   return (
     <div className="flex flex-col h-screen bg-amber-100/50">
       <div className="grid h-full    lg:grid-cols-2">

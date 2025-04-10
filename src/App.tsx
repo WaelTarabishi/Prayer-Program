@@ -13,9 +13,9 @@ function App() {
   const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
 
   // console.log(token);
-  if (!token) {
-    window.location.href = "/login";
-  }
+  // if (!token) {
+  //   window.location.href = "/login";
+  // }
   return (
     <>
       <QueryClientProvider client={queryClient}>
