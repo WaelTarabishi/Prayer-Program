@@ -10,6 +10,7 @@ function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [hijriDate, setHijriDate] = useState("");
   const [remainingTime, setRemainingTime] = useState<number>(1); // Example: 15 minutes until Iqama
+  //@ts-ignore
   const [currentPrayer, setCurrentPrayer] = useState("العصر"); // Example prayer
 
   useEffect(() => {
@@ -123,10 +124,7 @@ function Home() {
             <motion.div
               className="bg-amber-50 px-4 py-1 rounded-md text-[calc(0.8vw+0.7rem)] mr-2 font-bold"
               style={{
-                background:
-                  remainingTime < 1
-                    ? "#fef3c7"
-                    : "#fef3c7",
+                background: remainingTime < 1 ? "#fef3c7" : "#fef3c7",
                 backgroundSize: "200% 100%",
               }}
               animate={{
