@@ -50,14 +50,14 @@ const Hadith = () => {
   }, []);
 
   return (
-    <div className="flex md:flex-row flex-col justify-center items-center md:gap-10 -mt-[calc(1vw+1.4rem)]">
+    <div className="flex md:flex-row flex-col justify-center items-center md:gap-10  ">
       <motion.img
         src="./star.png"
-        className="md:w-[calc(9vw)] md:h-[calc(9vw)] w-[calc(7vw+4rem)] h-[calc(7vw+4rem)]"
+        className="md:w-[calc(9vw)] md:h-[calc(9vw)] w-[calc(7vw+4rem)] h-[calc(7vw+4rem)] "
         // animate={{ rotate: [0, 360] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
-      <div className="relative flex justify-center my-[calc(2vw+1rem)] bg-gradient-to-br from-amber-50 to-amber-100/90 border-[calc(0.2vw+1px)] border-amber-600/80 rounded-lg shadow-lg overflow-hidden">
+      <div className="relative flex justify-center    bg-gradient-to-br from-amber-50 to-amber-100/90 border-[calc(0.2vw+1px)] border-amber-600/80 rounded-lg shadow-lg overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentHadith}

@@ -167,7 +167,7 @@ const PrayerTimes: React.FC = () => {
       <div className="flex  relative z-10 flex-col items-center justify-center h-[calc(30vh)]">
         <div className="w-[calc(5vw+2.5rem)] h-[calc(5vw+2.5rem)] border-[calc(0.4vw+2px)] border-t-transparent border-amber-600 rounded-full animate-spin"></div>
         <div
-          className="mt-[calc(1vw+0.5rem)]"
+          className=""
           style={{ fontSize: "calc(1.5vw + 1rem)" }}>
           جاري تحميل مواقيت الصلاة...
         </div>
@@ -176,7 +176,7 @@ const PrayerTimes: React.FC = () => {
   }
 
   return (
-    <div className="text-right relative mt-[calc(1vw)] z-10" dir="rtl">
+    <div className="text-right relative  z-10" dir="rtl">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-[calc(1.2vw+0.8rem)]">
         {prayers.map((prayer, index) => (
           <div

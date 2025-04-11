@@ -1,9 +1,9 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Cookies from "js-cookie";
+import { Toaster } from "react-hot-toast";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
-import Dashboard from "./component/dashboard";
-import Cookies from "js-cookie";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "react-hot-toast";
+import Home from "./component/home";
 import Login from "./component/login";
 
 // Create a QueryClient instance
@@ -20,7 +20,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <Routes>
-          <Route index element={<Dashboard />} />
+          <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </QueryClientProvider>
