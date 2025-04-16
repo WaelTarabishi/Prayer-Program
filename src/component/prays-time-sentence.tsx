@@ -63,9 +63,11 @@ const PrayerTimesSentence = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}>
-            مواقيت الصلاة
+            مسجد علي بن أبي طالب
           </motion.h2>
 
+          {/* <div className="text-center mt-5 pb-5 text-amber-700 text-[calc(0.7vw+0.5rem)] font-arabic font-semibold pointer-events-auto select-text">
+  <div>مسجد علي بن أبي طالب</div> */}
           {/* Decorative divider below the text */}
           <motion.div
             className="flex justify-center items-center gap-2 -mt-[calc(0.5vw)]"

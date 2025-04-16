@@ -74,9 +74,8 @@ export function LoginForm({
             id="email"
             name="email"
             type="email"
-            placeholder="example@email.com"
             required
-            className="border-2 w-full border-amber-500 rounded-[calc(3vw+1em)]  p-[calc(0.5vw+0.4rem)]   focus:outline-none lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)] focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            className="border-2 w-full border-amber-500 rounded-[calc(3vw+1em)] mt-[calc(0.2vw+0.4rem)]  p-[calc(1.5vw+0.9rem)]   focus:outline-none lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)] focus:ring-2 focus:ring-amber-500 focus:border-transparent"
           />
         </div>
         <div className="grid gap-2 w-full">
@@ -88,20 +87,19 @@ export function LoginForm({
             </label>
           </div>
           <input
-            placeholder="*******"
             name="password"
             id="password"
             type="password"
             required
-            className="border-2 w-full border-amber-500 rounded-[calc(3vw+1em)]  p-[calc(0.5vw+0.4rem)]   lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)] focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            className="border-2 w-full border-amber-500 mt-[calc(0.2vw+0.4rem)] rounded-[calc(3vw+1em)]  p-[calc(1.5vw+0.9rem)]   lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)] focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
           />
         </div>
         <button
           disabled={isPending}
           type="submit"
-          className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-[calc(3vw+1em)]  transition-colors duration-500 mt-4  lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)]">
+          className="w-full bg-amber-600 cursor-pointer  hover:bg-amber-700 text-white font-semibold rounded-[calc(3vw+1em)]  transition-colors duration-500 mt-4  lg:h-[calc(4vw)] text-[calc(1vw+1.4rem)]">
           {isPending ? (
-            <span className="loader inline-block border-[3px] w-[calc(2vw+1rem)] h-[calc(2vw+1rem)] border-white border-t-transparent rounded-full animate-spin"></span>
+            <span className="loader inline-block border-[calc(0.2vw+0.1rem)] w-[calc(2vw+1rem)] h-[calc(2vw+1rem)] border-white mt-[calc(1vh+0.4rem)] border-t-transparent rounded-full animate-spin"></span>
           ) : (
             "تسجيل الدخول"
           )}

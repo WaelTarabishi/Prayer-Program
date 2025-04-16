@@ -1,67 +1,95 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 interface Prayer {
-  name?: string;
-  arabicName?: string;
-  time?: string;
+  prayer?: string;
+  adhan?: string;
   isNext?: boolean;
-  remainingTime?: string;
+  iqama?: string;
   adhanTime?: string;
   iqamahTime?: string;
+  onNumberChange?: (value: number) => void;
 }
 
-const PrayerTimes: React.FC = () => {
-  const [prayers, setPrayers] = useState<Prayer[]>([
-    {
-      name: "Fajr",
-      arabicName: "الفجر",
-      time: "",
-      isNext: false,
-      adhanTime: "5:43",
-      iqamahTime: "30:00",
-    },
-    {
-      name: "Sunrise",
-      arabicName: "الشروق",
-      time: "",
-      isNext: false,
-      adhanTime: "7:15",
-      iqamahTime: "30:00",
-    },
-    {
-      name: "Dhuhr",
-      arabicName: "الظهر",
-      time: "",
-      isNext: false,
-      adhanTime: "12:45",
-      iqamahTime: "30:00",
-    },
-    {
-      name: "Asr",
-      arabicName: "العصر",
-      time: "",
-      isNext: false,
-      adhanTime: "4:20",
-      iqamahTime: "30:00",
-    },
-    {
-      name: "Maghrib",
-      arabicName: "المغرب",
-      time: "",
-      isNext: false,
-      adhanTime: "7:30",
-      iqamahTime: "30:00",
-    },
-    {
-      name: "Isha",
-      arabicName: "العشاء",
-      time: "",
-      isNext: false,
-      iqamahTime: "30:00",
+const PrayerTimes: React.FC<{ onNumberChange: (value: number) => void }> = ({
+  onNumberChange,
+}) => {
+  const [prayers, setPrayers] = useState<Prayer[]>([]);
+  const token = Cookies.get("prayerTimeIdlebTimeAdminToken");
+  let isRemain = false;
+  // Format current time as HH:mm
+  const getCurrentHHMM = () => {
+    const now = new Date();
+    return now.toTimeString().slice(0, 5);
+  };
 
-      adhanTime: "9:00",
-    },
-  ]);
+  // Helper to convert HH:mm to minutes
+  const timeToMinutes = (time: string) => {
+    const [h, m] = time.split(":").map(Number);
+    return h * 60 + m;
+  };
+  // console.log(import.meta.env.VITE_APP_SECRET);
+  // console.log(token);
+  // Check every minute if current time is between adhan and iqama
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nowHHMM = getCurrentHHMM();
+      const nowMinutes = timeToMinutes(nowHHMM);
+
+      prayers.forEach((prayer) => {
+        //@ts-ignore
+        const adhanMinutes = timeToMinutes(prayer.adhan);
+        const iqamaMinutes = prayer.iqama;
+
+        if (
+          nowMinutes >= adhanMinutes &&
+          //@ts-ignore
+          nowMinutes < adhanMinutes + parseInt(iqamaMinutes) &&
+          isRemain == false
+        ) {
+          //@ts-ignore
+          onNumberChange(adhanMinutes + parseInt(iqamaMinutes) - nowMinutes);
+          isRemain = true;
+        }
+        //@ts-ignore
+        if (adhanMinutes + parseInt(iqamaMinutes) - nowMinutes == 0) {
+          isRemain = false;
+        }
+      });
+    }, 1000); // every 1 minute
+
+    return () => clearInterval(interval);
+  }, [prayers]);
+
+  // Update clock every second
+  useEffect(() => {
+    const updateClock = () => {
+      const now = new Date();
+      const h = now.getHours().toString().padStart(2, "0");
+      const m = now.getMinutes().toString().padStart(2, "0");
+      const s = now.getSeconds().toString().padStart(2, "0");
+      setCurrentTime(`${h}:${m}:${s}`);
+    };
+
+    updateClock();
+    const timer = setInterval(updateClock, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_APP_SECRET}/api/prayer-times`, {
+      headers: {
+        Authorization: token ? `Bearer ${token}` : "",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setPrayers(data.prayers);
+        console.log(prayers);
+      })
+      .catch((err) => console.error("Fetch error:", err));
+  }, []);
+
   //@ts-ignore
   const [currentDate, setCurrentDate] = useState("");
   //@ts-ignore
@@ -118,6 +146,7 @@ const PrayerTimes: React.FC = () => {
 
     const updatedPrayers = prayers.map((prayer) => {
       const [hour, minute] = mockPrayerTimes[
+        //@ts-ignore
         prayer.name as keyof typeof mockPrayerTimes
       ]
         .split(":")
@@ -126,6 +155,7 @@ const PrayerTimes: React.FC = () => {
 
       return {
         ...prayer,
+        //@ts-ignore
         time: mockPrayerTimes[prayer.name as keyof typeof mockPrayerTimes],
         isNext: prayerTimeInMinutes > currentTimeInMinutes,
       };
@@ -148,6 +178,7 @@ const PrayerTimes: React.FC = () => {
 
       updatedPrayers[
         nextPrayerIndex
+        //@ts-ignore
       ].remainingTime = `${hours} ساعة و ${minutes} دقيقة`;
 
       // Reset any other prayers that might be marked as next
@@ -166,9 +197,7 @@ const PrayerTimes: React.FC = () => {
     return (
       <div className="flex  relative z-10 flex-col items-center justify-center h-[calc(30vh)]">
         <div className="w-[calc(5vw+2.5rem)] h-[calc(5vw+2.5rem)] border-[calc(0.4vw+2px)] border-t-transparent border-amber-600 rounded-full animate-spin"></div>
-        <div
-          className=""
-          style={{ fontSize: "calc(1.5vw + 1rem)" }}>
+        <div className="" style={{ fontSize: "calc(1.5vw + 1rem)" }}>
           جاري تحميل مواقيت الصلاة...
         </div>
       </div>
@@ -206,7 +235,7 @@ const PrayerTimes: React.FC = () => {
                   <span
                     style={{ fontSize: "calc(1.6vw + 1rem)" }}
                     className={`font-bold text-amber-800 mr-[calc(0.5vw+0.2rem)]`}>
-                    {prayer.arabicName}
+                    {prayer.prayer}
                   </span>
                 </div>
               </div>
@@ -220,7 +249,7 @@ const PrayerTimes: React.FC = () => {
                       className="w-[calc(1.2vw+0.6em)]"
                       alt="Adhan Icon"
                     />
-                    أذان: {prayer.adhanTime}
+                    أذان: {prayer.adhan}
                   </span>
                   <span className="text-amber-600 flex items-center justify-center gap-x-2 font-semibold">
                     <img
@@ -228,7 +257,7 @@ const PrayerTimes: React.FC = () => {
                       className="w-[calc(1.2vw+0.6em)]"
                       alt="Iqamah Icon"
                     />
-                    إقامة: {prayer.iqamahTime}
+                    إقامة: {prayer.iqama}
                   </span>
                 </div>
               </div>

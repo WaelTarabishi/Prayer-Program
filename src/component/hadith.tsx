@@ -45,12 +45,12 @@ const Hadith = () => {
         setCurrentHadith((prev) => (prev + 1) % hadiths.length);
         setIsChanging(false);
       }, 500); // Wait for fade-out animation to complete
-    }, 6000); // Change hadith every 6 seconds (increased from 4s to give more reading time)
+    }, 15000); // Change hadith every 6 seconds (increased from 4s to give more reading time)
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="flex md:flex-row flex-col justify-center items-center md:gap-10  ">
+    <div className="flex md:flex-row flex-col justify-center items-center md:gap-10   px-[calc(1vw)] ">
       <motion.img
         src="./star.png"
         className="md:w-[calc(9vw)] md:h-[calc(9vw)] w-[calc(7vw+4rem)] h-[calc(7vw+4rem)] "
@@ -83,7 +83,6 @@ const Hadith = () => {
       <motion.img
         src="./star.png"
         className="md:w-[calc(9vw)] md:h-[calc(9vw)] w-[calc(7vw+4rem)] h-[calc(7vw+4rem)]"
-        // animate={{ rotate: [0, -360] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
     </div>
